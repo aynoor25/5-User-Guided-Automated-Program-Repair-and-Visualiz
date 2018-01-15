@@ -1,0 +1,172 @@
+#include "llvm/Pass.h"
+#include "llvm/IR/Function.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/IR/LegacyPassManager.h"
+#include "llvm/IR/InstrTypes.h"
+#include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/Transforms/Utils/BasicBlockUtils.h"
+#include "llvm/IR/Module.h"
+using namespace llvm;
+/*namespace {
+struct SkeletonPass : public FunctionPass {
+static char ID;
+SkeletonPass() : FunctionPass(ID) {}
+virtual bool runOnFunction(Function &F) {
+for (auto &B : F) {
+for (auto &I : B) {
+if (auto *op = dyn_cast<BinaryOperator>(&I)) {
+// Insert at the point where the instruction `op` appears.
+IRBuilder<> builder(op);
+// Make a multiply with the same operands as `op`.
+Value *lhs = op->getOperand(0);
+Value *rhs = op->getOperand(1);
+Value *mul = builder.CreateMul(lhs, rhs);
+// Everywhere the old instruction was used as an operand, use our
+// new multiply instruction instead.
+for (auto &U : op->uses()) {
+User *user = U.getUser(); // A User is anything with operands.
+user->setOperand(U.getOperandNo(), mul);
+}
+// We modified the code.
+return true;
+}
+}
+}
+return false;
+}
+};
+}
+char SkeletonPass::ID = 0;
+static RegisterPass<SkeletonPass> X("skeleton", "Skeleton Pass", false, false);
+
+// Automatically enable the pass.
+// http://adriansampson.net/blog/clangpass.html
+static void registerSkeletonPass(const PassManagerBuilder &,
+legacy::PassManagerBase &PM) {
+PM.add(new SkeletonPass());
+}
+static RegisterStandardPasses
+RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible,
+registerSkeletonPass);*/
+
+/*#include <map>
+
+#include "llvm/Pass.h"
+#include "llvm/IR/Function.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/IR/LegacyPassManager.h"
+#include "llvm/IR/InstrTypes.h"
+#include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/Transforms/Utils/BasicBlockUtils.h"
+
+using namespace llvm;
+
+namespace {
+  struct Hello : public FunctionPass {
+    static char ID;
+    Hello() : FunctionPass(ID) {}
+
+    bool runOnFunction(Function &F) override {
+      errs() << "Hello: ";
+      errs().write_escaped(F.getName()) << '\n';
+      return false;
+    }
+  };
+}
+
+char Hello::ID = 0;
+static RegisterPass<Hello> X("hello", "Hello World Pass", false, false);
+
+
+namespace {
+	struct TransformOp : public FunctionPass
+	{
+		static char ID;
+		TransformOp() : FunctionPass(ID) {}
+
+		bool runOnFunction(Function &F) override {
+			errs() << "Function name: " << F.getName() << '\n';
+			for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
+				//for (BasicBlock::iterator i = bb->begin(), f = bb->end(); i != f; ++i) {
+				//	errs().write_escaped(i->getOpcodeName()) << "********" << '\n';
+				//}
+				errs() << "x.X" << '\n';
+			} 
+			return false;
+		}
+	};
+}
+
+char TransformOp::ID = 0;
+static RegisterPass<TransformOp> Z("opTransform", "Transforms all add opcode to multiply", false, false);
+
+
+namespace {
+  struct CountOp : public FunctionPass {
+    std::map<std::string, int> opCounter;
+    static char ID;
+    CountOp() : FunctionPass(ID) {}
+
+    bool runOnFunction(Function &F) override {
+      errs() << "Function " << F.getName() << '\n';
+      for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
+        for (BasicBlock::iterator i = bb->begin(), e1 = bb->end(); i != e1; ++i) {
+          if(opCounter.find(i->getOpcodeName()) == opCounter.end()) {
+            opCounter[i->getOpcodeName()] = 1;
+          } else {
+            opCounter[i->getOpcodeName()] += 1;
+          }
+        }
+      }
+      std::map <std::string, int>::iterator i = opCounter.begin();
+      std::map <std::string, int>::iterator e = opCounter.end();
+      while (i != e) {
+        errs() << i->first << ": " << i->second << "\n";
+        i++;
+      }
+      errs() << "\n";
+      opCounter.clear();
+      return false;
+    }
+  };
+}
+char CountOp::ID = 0;
+static RegisterPass<CountOp> Y("opCounter", "Counts opcodes per functions", false, false);
+
+
+namespace {
+  struct SkeletonPass : public FunctionPass {
+    static char ID;
+    SkeletonPass() : FunctionPass(ID) {}
+    
+    virtual bool runOnFunction(Function &F) {
+      for (auto &B : F) {
+        for (auto &I : B) {
+          if (auto *op = dyn_cast<BinaryOperator>(&I)) {
+            // Insert at the point where the instruction `op` appears.
+            IRBuilder<> builder(op);
+            // Make a multiply with the same operands as `op`.
+            Value *lhs = op->getOperand(0);
+            Value *rhs = op->getOperand(1);
+            Value *mul = builder.CreateMul(lhs, rhs);
+            // Everywhere the old instruction was used as an operand, use our
+            // new multiply instruction instead.
+            for (auto &U : op->uses()) {
+              User *user = U.getUser(); // A User is anything with operands.
+              user->setOperand(U.getOperandNo(), mul);
+            }
+            
+            // We modified the code.
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+  };
+}
+char SkeletonPass::ID = 0;
+
+static RegisterPass<SkeletonPass> V("skeleton", "Changes +, - to *", false, false);*/
