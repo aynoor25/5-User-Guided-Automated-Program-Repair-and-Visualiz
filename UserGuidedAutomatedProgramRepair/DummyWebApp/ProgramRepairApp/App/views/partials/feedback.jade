@@ -1,0 +1,23 @@
+//script(src='js/feedback.js');
+#page-wrapper
+      .container-fluid
+        // Page Heading
+        .row
+          .col-lg-12
+            h1.page-header  Feedback 
+        // /.row
+      // /.container-fluid
+      #contact.container-fluid.bg-grey
+        .row
+          .col-sm-12.slideanim
+            .row
+              .col-sm-6.form-group
+                input#name.form-control(name='name', placeholder='Name', type='text', required='', readonly='')
+              .col-sm-6.form-group
+                input#email.form-control(name='email', placeholder='Email', type='email', required='', readonly='')
+            textarea#comments.form-control(name='comments', placeholder='Feedback', rows='5', readonly='')
+            br
+            .row
+              .col-sm-12.form-group
+                button.btn.btn-default.pull-right(onclick='send_feedback()') Send
+    // /#page-wrapper

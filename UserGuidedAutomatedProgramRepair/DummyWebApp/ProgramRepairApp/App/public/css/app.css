@@ -1,0 +1,106 @@
+/* app css stylesheet */
+/*html *
+{
+   font-size: 20px !important;
+}*/
+
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.TC {
+    display: inline-block;
+    border-radius: 15%/15%; 
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    margin-top: 15px;
+    background: gray;
+  }
+
+  .TCNames {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 12px;
+    margin-right: 25px;
+    margin-top: 55px;
+    color:  #402633;
+  }
+
+  #editor { 
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 500px;
+    width: 540px;
+  }
+
+  .myMarker {
+    position:absolute;
+    background:#ff1a1a;
+    z-index: 5;
+  }
+
+  .popover_suggestion {
+    height: 5px;
+    width: 5px;
+    z-index: 25;
+  }
+  .popover {
+    z-index: 25;
+  }
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  background-color: #051069;;
+}
+
+ul.nav.navbar-nav.side-nav {
+    background-color: #051069;
+    /*width: 180px;*/
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+  background-color: #051069;;
+}
+
+.side-nav li a:hover, .side-nav li a:focus {
+  outline: none;
+    background-color: #051069; !important;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #f5f5f5;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #f5f5f5;
+}

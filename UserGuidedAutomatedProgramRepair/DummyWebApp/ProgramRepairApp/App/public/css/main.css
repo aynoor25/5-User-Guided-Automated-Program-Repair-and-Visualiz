@@ -1,0 +1,43 @@
+  .TC {
+    display: inline-block;
+    border-radius: 15%/15%; 
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    margin-top: 15px;
+    background: gray;
+  }
+
+  .TCNames {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-top: 35px;
+    color:  #402633;
+  }
+
+  #editor { 
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 500px;
+    width: 540px;
+  }
+
+  .myMarker {
+    position:absolute;
+    background:#ff1a1a;
+    z-index: 5;
+  }
+
+  .popover_suggestion {
+    height: 5px;
+    width: 5px;
+    z-index: 25;
+  }
+  .popover {
+    z-index: 25;
+  }
