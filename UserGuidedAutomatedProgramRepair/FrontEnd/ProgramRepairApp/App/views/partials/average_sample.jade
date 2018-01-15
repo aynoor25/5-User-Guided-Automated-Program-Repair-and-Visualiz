@@ -1,0 +1,25 @@
+script(src='js/average_sample.js')
+#page-wrapper
+	.container-fluid
+		.row
+			.col-lg-12
+				h1.page-header  Average Sample 
+		.row
+			.col-sm-7
+				#editor
+				br
+				#error_fix_sugg.alert.alert-danger(style='visibility:hidden', role='alert')
+					p#faulty_line_fix.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')  
+			.col-sm-5
+				div
+					textarea#detailed_info.form-control(style='background-color: black; color: #ffffff', rows='6',readonly='')
+					br
+					#demo_fix
+					#testcases
+					br
+					button(onclick='demo_go_back()', style='background-color:transparent; border-color:transparent;')
+						img(src='/img/back_button.jpg')
+					button(onclick='demo_go_forward()', style='background-color:transparent; border-color:transparent;')
+						img(src='/img/forward_button.jpg')
+					br
+					a.btn.btn-info.btn-lg(onclick='run()') RUN

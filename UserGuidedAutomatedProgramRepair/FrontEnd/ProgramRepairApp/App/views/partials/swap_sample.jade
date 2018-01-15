@@ -1,0 +1,23 @@
+script(src='js/swap_sample.js')
+#page-wrapper
+	.container-fluid
+		.row
+			.col-lg-12
+				h1.page-header  Swap Sample 
+		.row
+			.col-sm-7
+				#editor
+				br
+				#error_fix_sugg.alert.alert-danger(style='visibility:visible', role='alert')
+					p#faulty_line_fix.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')  
+			.col-sm-5
+				div
+					textarea#detailed_info.form-control(style='background-color: black; color: #ffffff', rows='6')
+					br
+					#demo_fix
+					#testcases
+					br
+					button(onclick='demo_go_back()', style='background-color:transparent; border-color:transparent;')
+						img(src='/img/back_button.jpg')
+					button(onclick='demo_go_forward()', style='background-color:transparent; border-color:transparent;')
+						img(src='/img/forward_button.jpg')

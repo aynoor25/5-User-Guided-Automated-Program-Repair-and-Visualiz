@@ -1,0 +1,47 @@
+#page-wrapper
+  // Container (About Section)
+  .container-fluid
+    // Page Heading
+    .row
+      .col-lg-12
+        h1.page-header  About 
+    // /.row
+  .container-fluid
+    // Page Heading
+    .row
+      .col-lg-12
+        h2 How It Works
+        br
+    // /.row
+  .container-fluid
+    .row
+      .col-sm-8
+        h4
+          ol(type='1')
+            li Upload the source code.
+            li Upload test cases.
+            li Faulty line in the code is found using a fault localization technique.
+            li Transform the code at the faulty line. 
+            li Run all the test cases on the transformed code. 
+            li
+              | If all the test cases pass than then the transformation is given as a proposed fix.
+            li  Else go back to step 4. 
+      .col-sm-4
+        img(src='/img/HowItWorks1.jpg', alt='How it works1', style='width:200px;height:200px;')
+  .container-fluid
+    // Page Heading
+    .row
+      .col-lg-12
+        h2 What It Fixes
+        br
+    // /.row
+  .container-fluid.bg-grey
+    .row
+      .col-sm-8
+        h4
+          ul
+            li Variable replacement.
+            li Operator change.
+      .col-sm-4
+        img(src='/img/PossibleFix.jpg', alt='Possible Fixes', style='width:200px;height:200px;')
+// /#page-wrapper

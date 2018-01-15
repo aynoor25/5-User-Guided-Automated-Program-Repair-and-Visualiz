@@ -1,0 +1,52 @@
+script(src='js/median_sample.js')
+#page-wrapper
+      // Container (About Section)
+    .container-fluid
+      h1.page-header  Median Sample
+      .row
+        .col-sm-7
+          #editor
+          br
+          #error_fix_sugg.alert.alert-danger(style='visibility:hidden', role='alert')
+            p#faulty_line_fix.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')  
+        .col-sm-5
+          .upload_button_source_code
+            h4  Select a source code file to upload. 
+            span.btn.btn-default.btn-file
+              input#source_code_file_input(type='file')
+            button.btn.btn-warning.pull-middle(onclick='send_source_code_file()')  Upload 
+          .upload_button_test_case
+            h4  Select a test case file to upload. 
+            span.btn.btn-default.btn-file
+              input#test_case_file_input(type='file')
+            button.btn.btn-warning.pull-middle(onclick='send_test_case_file()')  Upload 
+          br
+          div
+            .col-sm-12.form-group
+              button.btn.btn-primary(onclick='is_user_guided()') User Guided
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              button.btn.btn-success(onclick='default_repair_process()') Default
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              button.btn.btn-danger(onclick='reset()') Reset
+              br
+              br
+              button.btn.btn-primary(onclick='tarantula()') Fault Localization
+              br
+              br
+              button.btn.btn-primary(onclick='send_faulty_line_number()') Line Select
+              br
+              br
+              #checkbox_home
+              br
+              button.btn.btn-primary(onclick='run()') Repair
+            h4 List of suggestions tried:
+            textarea#detailed_info.form-control(style='background-color: #1C1C0C; color: #ffffff', rows='3',readonly='')
+            br
+            #demo_fix
+            #testcases
+            br
+            button(onclick='demo_go_back()', style='background-color:transparent; border-color:transparent;')
+              img(src='/img/back_button.jpg')
+            button(onclick='demo_go_forward()', style='background-color:transparent; border-color:transparent;')
+              img(src='/img/forward_button.jpg')
+            br
